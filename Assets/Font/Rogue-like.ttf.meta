@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 33e362f7507874d47a52a81f7b537781
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 7
+  forceTextureCase: 3
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Rogue-like
+  fallbackFontReferences: []
+  customCharacters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ.?!-abcdefghijklmnopqrstuvwxyz()\"$1234567890[]%:;@\\/',{}|\xA3\u20AC+&=#\u25A0"
+  fontRenderingMode: 1
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
