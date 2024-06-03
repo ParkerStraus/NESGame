@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,10 +35,22 @@ public class Player : MonoBehaviour
     [Header("Sound")]
     public AudioSource AS;
 
+    [Serializable]
+    public struct PlayerData
+    {
+        public bool Walking;
+        public bool OnGround;
+        public bool Attacking;
+    }
+
+    [SerializeField] private PlayerData m_PlayerData;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_PlayerData.Attacking = false;
+        m_PlayerData.Walking = false;
+        m_PlayerData.OnGround = false;
     }
 
     // Update is called once per frame
@@ -51,6 +64,7 @@ public class Player : MonoBehaviour
     void HorizontalHandling()
     {
         float control = Input.GetAxisRaw("Horizontal");
+        m_PlayerData.Walking = true;
         if (control > 0)
         {
             H_Velocity = HorizontalSpeed;
@@ -62,6 +76,7 @@ public class Player : MonoBehaviour
         else
         {
             H_Velocity = 0;
+            m_PlayerData.Walking = false;
         }
     }
 
@@ -118,6 +133,6 @@ public class Player : MonoBehaviour
             V_Velocity = JumpSpeed;
             JumpTime_Current += Time.deltaTime;
         }
-
+        m_PlayerData.OnGround = OnGround;
     }
 }

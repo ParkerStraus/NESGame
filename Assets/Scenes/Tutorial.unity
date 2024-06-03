@@ -406,18 +406,22 @@ MonoBehaviour:
   HorizontalSpeed: 7.5
   VerticalSpeed: 0
   GoingLeft: 0
-  JumpSpeed: 5
-  JumpTime: 0.5
+  JumpSpeed: 10
+  JumpTime: 0.25
   JumpTime_Current: 0
   IsJumping: 0
   FallInterp: 5
   RideHeight: 1.25
   RayLength: 1.5
-  FallSpeed: 5
+  FallSpeed: 10
   CoyoteTime: 0
   CoyoteTime_Base: 0.125
   OnGround: 0
   AS: {fileID: 0}
+  m_PlayerData:
+    Walking: 0
+    OnGround: 0
+    Attacking: 0
 --- !u!50 &1084865847
 Rigidbody2D:
   serializedVersion: 4
