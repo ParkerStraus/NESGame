@@ -26,7 +26,7 @@ public class Animator_Player : MonoBehaviour
         }
         else if (data.Walking)
         {
-            if (data.Attacking)
+            if (data.Attacking > 0)
             {
                 anim.CrossFade(ShootWalk, 0f);
             }
@@ -34,7 +34,7 @@ public class Animator_Player : MonoBehaviour
         }
         else
         {
-            if(data.Attacking)
+            if(data.Attacking > 0)
             {
                 anim.CrossFade(Shoot, 0f);
             }

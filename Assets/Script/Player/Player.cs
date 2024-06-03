@@ -11,7 +11,7 @@ public struct PlayerData
     public bool GoingRight;
     public bool Walking;
     public bool OnGround;
-    public bool Attacking;
+    public float Attacking;
 }
 
 public class Player : MonoBehaviour
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         m_PlayerData.GoingRight = true;
-        m_PlayerData.Attacking = false;
+        m_PlayerData.Attacking = 0;
         m_PlayerData.Walking = false;
         m_PlayerData.OnGround = false;
     }
@@ -74,6 +74,7 @@ public class Player : MonoBehaviour
         {
             ShootHandle();
         }
+        m_PlayerData.Attacking -= Time.deltaTime;
         anim.Animate(m_PlayerData);
     }
 
@@ -182,6 +183,7 @@ public class Player : MonoBehaviour
         direc = direc * 45;
         Quaternion angle = Quaternion.Euler(0.0f, 0.0f, -direc);
         //Note: if adding additional shot types, change this to function call
+        m_PlayerData.Attacking = 0.25f;
         Instantiate(bulletFab, transform.position, angle);
     }
 }
