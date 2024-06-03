@@ -133,11 +133,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.054474708
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.8915176
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3993476266096680814, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_Name
@@ -411,8 +411,8 @@ MonoBehaviour:
   JumpTime_Current: 0
   IsJumping: 0
   FallInterp: 5
-  RideHeight: 1.25
-  RayLength: 1.5
+  RideHeight: 0.75
+  RayLength: 1
   FallSpeed: 10
   CoyoteTime: 0
   CoyoteTime_Base: 0.125
@@ -422,6 +422,7 @@ MonoBehaviour:
     Walking: 0
     OnGround: 0
     Attacking: 0
+  bulletFab: {fileID: 646268330230426918, guid: 938796cc1601c0542803579518144061, type: 3}
 --- !u!50 &1084865847
 Rigidbody2D:
   serializedVersion: 4

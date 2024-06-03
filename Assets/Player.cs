@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour
     }
 
     [SerializeField] private PlayerData m_PlayerData;
+    [SerializeField] private Transform bulletFab;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,14 @@ public class Player : MonoBehaviour
         HorizontalHandling();
         VerticalHandling();
         Rigidbody.velocity = new Vector2(H_Velocity, V_Velocity);
+        if (Input.GetButtonDown("Select"))
+        {
+            //Add weapon swap here
+        }
+        if (Input.GetButtonDown("B"))
+        {
+            ShootHandle();
+        }
     }
 
     void HorizontalHandling()
@@ -134,5 +144,33 @@ public class Player : MonoBehaviour
             JumpTime_Current += Time.deltaTime;
         }
         m_PlayerData.OnGround = OnGround;
+    }
+
+    void ShootHandle()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        int direc = 2;
+        if(x < 0)
+        {
+            direc = 6;
+        }
+
+        if (y < 0)
+        {
+            if (x < 0) { direc = 5; }
+            else if (x > 0) { direc = 3; }
+            else { direc = 4; }
+        }
+        else if (y > 0)
+        {
+            if (x < 0) { direc = 7; }
+            else if (x > 0) { direc = 1; }
+            else { direc = 0; }
+        }
+        direc = direc * 45;
+        Quaternion angle = Quaternion.Euler(0.0f, 0.0f, -direc);
+        //Note: if adding additional shot types, change this to function call
+        Instantiate(bulletFab, transform.position, angle);
     }
 }
