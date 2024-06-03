@@ -5,6 +5,15 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
+[Serializable]
+public struct PlayerData
+{
+    public bool GoingRight;
+    public bool Walking;
+    public bool OnGround;
+    public bool Attacking;
+}
+
 public class Player : MonoBehaviour
 {
     public Animator animator;
@@ -36,20 +45,16 @@ public class Player : MonoBehaviour
     [Header("Sound")]
     public AudioSource AS;
 
-    [Serializable]
-    public struct PlayerData
-    {
-        public bool Walking;
-        public bool OnGround;
-        public bool Attacking;
-    }
+    
 
     [SerializeField] private PlayerData m_PlayerData;
     [SerializeField] private Transform bulletFab;
+    [SerializeField] private Animator_Player anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_PlayerData.GoingRight = true;
         m_PlayerData.Attacking = false;
         m_PlayerData.Walking = false;
         m_PlayerData.OnGround = false;
@@ -69,6 +74,7 @@ public class Player : MonoBehaviour
         {
             ShootHandle();
         }
+        anim.Animate(m_PlayerData);
     }
 
     void HorizontalHandling()
@@ -77,10 +83,12 @@ public class Player : MonoBehaviour
         m_PlayerData.Walking = true;
         if (control > 0)
         {
+            m_PlayerData.GoingRight = true;
             H_Velocity = HorizontalSpeed;
         }
         else if(control < 0)
         {
+            m_PlayerData.GoingRight = false;
             H_Velocity = -HorizontalSpeed;
         }
         else
@@ -150,23 +158,26 @@ public class Player : MonoBehaviour
     {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        int direc = 2;
-        if(x < 0)
+        int direc = 6;
+        if (m_PlayerData.GoingRight == true)
         {
-            direc = 6;
+            direc = 2;
         }
 
         if (y < 0)
         {
-            if (x < 0) { direc = 5; }
-            else if (x > 0) { direc = 3; }
+            if (m_PlayerData.Walking)
+            {
+                if (m_PlayerData.GoingRight == true) { direc = 5; }
+                else if (m_PlayerData.GoingRight != true) { direc = 3; }
+            }
             else { direc = 4; }
         }
         else if (y > 0)
         {
-            if (x < 0) { direc = 7; }
-            else if (x > 0) { direc = 1; }
-            else { direc = 0; }
+            if (m_PlayerData.GoingRight != true) { direc = 7; }
+            else if (m_PlayerData.GoingRight == true) { direc = 1; }
+            if(m_PlayerData.Walking==false){ direc = 0; }
         }
         direc = direc * 45;
         Quaternion angle = Quaternion.Euler(0.0f, 0.0f, -direc);

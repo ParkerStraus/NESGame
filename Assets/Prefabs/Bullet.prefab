@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  speed: 8
+  speed: 17.75
   timeout: 4
 --- !u!50 &1621930235385369207
 Rigidbody2D:
