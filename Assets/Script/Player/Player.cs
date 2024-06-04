@@ -192,8 +192,8 @@ public class Player : MonoBehaviour
         {
             if (m_PlayerData.Walking)
             {
-                if (m_PlayerData.GoingRight == true) { direc = 5; }
-                else if (m_PlayerData.GoingRight != true) { direc = 3; }
+                if (m_PlayerData.GoingRight == true) { direc = 3; }
+                else if (m_PlayerData.GoingRight != true) { direc = 5; }
             }
             else { direc = 4; }
         }
@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
         //Note: if adding additional shot types, change this to function call
         m_PlayerData.Attacking = 0.25f;
         Audio.Shoot();
-        Instantiate(bulletFab, transform.position, angle);
+        Instantiate(bulletFab, transform.position+new Vector3(0,-0.5f,0), angle);
     }
 
     void RatTrampoline()
