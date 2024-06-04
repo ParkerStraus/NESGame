@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -44,14 +45,24 @@ public class Player : MonoBehaviour
 
 
 
+    [Header("Aesthetics")]
     private Sound_Player Audio;
     [SerializeField] private PlayerData m_PlayerData;
-    [SerializeField] private Transform bulletFab;
     [SerializeField] private Animator_Player anim;
+
+    [Header("Combat")]
+    [SerializeField] private Transform bulletFab;
+
+    public int AbilitySetting;
+    public bool[] AbilityFlags;
+    public Sprite[] AbilitySprite;
+    public SpriteRenderer AbilityIndicator;
 
     // Start is called before the first frame update
     void Start()
     {
+        AbilityIndicator.enabled = false;
+        AbilityFlags[0] = true;
         m_PlayerData.GoingRight = true;
         m_PlayerData.Attacking = 0;
         m_PlayerData.Walking = false;
@@ -68,11 +79,20 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Select"))
         {
             Audio.AbilitySelect();
-            //Add weapon swap here
+            SetAbility();
         }
         if (Input.GetButtonDown("B"))
         {
-            ShootHandle();
+            switch (AbilitySetting)
+            {
+                default:
+                    ShootHandle();
+                    break;
+                case 1:
+                    RatTrampoline();
+                    break;
+
+            }
         }
         m_PlayerData.Attacking -= Time.deltaTime;
         anim.Animate(m_PlayerData);
@@ -156,6 +176,8 @@ public class Player : MonoBehaviour
         m_PlayerData.OnGround = OnGround;
     }
 
+    #region Shooting
+
     void ShootHandle()
     {
         float x = Input.GetAxisRaw("Horizontal");
@@ -187,5 +209,35 @@ public class Player : MonoBehaviour
         m_PlayerData.Attacking = 0.25f;
         Audio.Shoot();
         Instantiate(bulletFab, transform.position, angle);
+    }
+
+    void RatTrampoline()
+    {
+
+    }
+
+    #endregion
+
+    void SetAbility()
+    {
+        AbilitySetting++;
+        AbilitySetting = AbilitySetting % AbilityFlags.Length;
+
+        while (AbilityFlags[AbilitySetting] == false)
+        {
+            AbilitySetting++;
+            AbilitySetting = AbilitySetting % AbilityFlags.Length;
+        }
+        //Set View of ability indicator
+        StopAllCoroutines();
+        StartCoroutine(AbilityVisibility());
+    }
+
+    IEnumerator AbilityVisibility()
+    {
+        AbilityIndicator.enabled = true;
+        AbilityIndicator.sprite = AbilitySprite[AbilitySetting];
+        yield return new WaitForSeconds(2);
+        AbilityIndicator.enabled = false;
     }
 }
