@@ -15,7 +15,6 @@ public class BulletHandler : MonoBehaviour
     void Start()
     {
         transform.Translate(Vector3.up);
-        Debug.Log("Instantiated");
         Object.Destroy(gameObject, timeout);
     }
 
