@@ -42,11 +42,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float CoyoteTime_Base;
     public bool OnGround;
 
-    [Header("Sound")]
-    public AudioSource AS;
 
-    
 
+    private Sound_Player Audio;
     [SerializeField] private PlayerData m_PlayerData;
     [SerializeField] private Transform bulletFab;
     [SerializeField] private Animator_Player anim;
@@ -58,6 +56,7 @@ public class Player : MonoBehaviour
         m_PlayerData.Attacking = 0;
         m_PlayerData.Walking = false;
         m_PlayerData.OnGround = false;
+        Audio = GetComponent<Sound_Player>();
     }
 
     // Update is called once per frame
@@ -68,6 +67,7 @@ public class Player : MonoBehaviour
         Rigidbody.velocity = new Vector2(H_Velocity, V_Velocity);
         if (Input.GetButtonDown("Select"))
         {
+            Audio.AbilitySelect();
             //Add weapon swap here
         }
         if (Input.GetButtonDown("B"))
@@ -140,6 +140,7 @@ public class Player : MonoBehaviour
 
         if (OnGround && Input.GetButtonDown("A"))
         {
+            Audio.Jump();
             print("Jumping");
             OnGround = false;
             V_Velocity = JumpSpeed;
@@ -184,6 +185,7 @@ public class Player : MonoBehaviour
         Quaternion angle = Quaternion.Euler(0.0f, 0.0f, -direc);
         //Note: if adding additional shot types, change this to function call
         m_PlayerData.Attacking = 0.25f;
+        Audio.Shoot();
         Instantiate(bulletFab, transform.position, angle);
     }
 }

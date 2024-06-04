@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.RestService;
@@ -12,10 +13,12 @@ public class Animator_Player : MonoBehaviour
     private static readonly int Jump = Animator.StringToHash("Jump");
     private static readonly int Shoot = Animator.StringToHash("Shoot");
     private static readonly int ShootWalk = Animator.StringToHash("Shoot Walk");
+
+    public Sound_Player sound;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     public void Animate(PlayerData data)
@@ -34,7 +37,7 @@ public class Animator_Player : MonoBehaviour
         }
         else
         {
-            if(data.Attacking > 0)
+            if (data.Attacking > 0)
             {
                 anim.CrossFade(Shoot, 0f);
             }
@@ -44,10 +47,18 @@ public class Animator_Player : MonoBehaviour
             }
         }
 
-        
+
         sprite.flipX = !data.GoingRight;
-        
-        
-        
+
+
+
+
+
+
+    }
+
+    public void FootStep()
+    {
+        sound.FootStep();
     }
 }
