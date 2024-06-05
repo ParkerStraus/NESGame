@@ -5,7 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/GameBase.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: c58ac9a1aa9957a459538ca627e5a6fb
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 3dc3d94a15f56234b9ae426171f74675
+  - enabled: 1
+    path: Assets/Scenes/Levels/Florida.unity
+    guid: b3a9a82e4b10f854eb3dbb9c0c8c2cb8
+  - enabled: 1
+    path: Assets/Scenes/Levels/Los Angeles.unity
+    guid: b8a7231687429524a9b556f79b3e7d4a
+  - enabled: 1
+    path: Assets/Scenes/Levels/New York.unity
+    guid: 012952191b9185044a6dfd00aabe8ab3
+  - enabled: 1
+    path: Assets/Scenes/Levels/Oregon.unity
+    guid: 60ade27e39f2bba49a8b41c743d5c0bb
+  - enabled: 1
+    path: Assets/Scenes/Levels/Texas.unity
+    guid: 3495aec7a161d1849b8b90598fd19471
   m_configObjects: {}
