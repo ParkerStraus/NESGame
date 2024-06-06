@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 52962218}
   - component: {fileID: 52962217}
   m_Layer: 0
-  m_Name: Text (TMP) (2)
+  m_Name: New Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 292595685}
   - component: {fileID: 292595684}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: Cotinue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 620707268}
   - component: {fileID: 620707267}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -746,6 +746,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca408a11bd0836429471fd741b16918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursor: {fileID: 620707266}
+  CursorPos: 0
+  CursorPositioning:
+  - {x: -2.57, y: -0.665}
+  - {x: -2.57, y: -1.92}
+  Text_NewGame: {fileID: 52962216}
+  Text_Continue: {fileID: 292595683}
+  SaveFound: 0
 --- !u!4 &945896835
 Transform:
   m_ObjectHideFlags: 0
@@ -900,8 +908,8 @@ MonoBehaviour:
   m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_SubmitButton: Start
+  m_CancelButton: Select
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -1026,7 +1034,7 @@ SceneRoots:
   - {fileID: 314018527}
   - {fileID: 1519130262}
   - {fileID: 509192822}
-  - {fileID: 292595686}
   - {fileID: 52962219}
+  - {fileID: 292595686}
   - {fileID: 945896835}
   - {fileID: 620707268}

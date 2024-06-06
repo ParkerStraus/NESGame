@@ -28,6 +28,18 @@ public static class SaveSystem
         stream.Close();
     }
 
+    public static SaveData InitData()
+    {
+        
+        SaveData save = new SaveData(new bool[5]);
+        for (int i = 0; i < save.LevelCompletion.Length; i++)
+        {
+            save.LevelCompletion[i] = false;
+        }
+        SaveData(save);
+        return save;
+    }
+
     public static SaveData LoadData()
     {
         string path = Application.persistentDataPath + "/save.data";
@@ -46,14 +58,21 @@ public static class SaveSystem
         else
         {
             Debug.LogError("No save found providing new data");
-            SaveData save = new SaveData(new bool[6]);
-            save.LevelCompletion[0] = true;
-            for (int i = 1; i < save.LevelCompletion.Length; i++)
-            {
-                save.LevelCompletion[i] = false;
-            }
-            SaveData(save);
+            SaveData save = InitData();
             return save;
+        }
+    }
+    public static bool CheckData()
+    {
+        string path = Application.persistentDataPath + "/save.data";
+        Debug.Log("Now loading at " + path);
+        if (File.Exists(path))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

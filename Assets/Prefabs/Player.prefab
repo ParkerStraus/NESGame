@@ -102,6 +102,7 @@ MonoBehaviour:
   CoyoteTime: 0
   CoyoteTime_Base: 0.125
   OnGround: 0
+  Audio: {fileID: 0}
   m_PlayerData:
     GoingRight: 0
     Walking: 0
@@ -110,7 +111,7 @@ MonoBehaviour:
   anim: {fileID: 6198694942830601276}
   bulletFab: {fileID: 646268330230426918, guid: 938796cc1601c0542803579518144061, type: 3}
   AbilitySetting: 0
-  AbilityFlags: 0001000101
+  AbilityFlags: 000100010101
   AbilitySprite:
   - {fileID: -407411083, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}
   - {fileID: 1488111919, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}

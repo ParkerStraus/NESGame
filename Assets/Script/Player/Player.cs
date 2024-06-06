@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
 
 
     [Header("Aesthetics")]
-    private Sound_Player Audio;
+    [SerializeField] private Sound_Player Audio;
     [SerializeField] private PlayerData m_PlayerData;
     [SerializeField] private Animator_Player anim;
 
@@ -62,7 +62,15 @@ public class Player : MonoBehaviour
     void Start()
     {
         AbilityIndicator.enabled = false;
+
         AbilityFlags[0] = true;
+        bool[] abilities = SaveSystem.LoadData().LevelCompletion;
+        for (int i = 0; i < abilities.Length; i++)
+        {
+            print(abilities[i]);
+            AbilityFlags[i + 1] = abilities[i];
+        }
+
         m_PlayerData.GoingRight = true;
         m_PlayerData.Attacking = 0;
         m_PlayerData.Walking = false;
