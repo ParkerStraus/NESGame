@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletHandler : MonoBehaviour
 {
-    public float damage;
+    public int damage;
     public float speed;
     public float timeout;
     //TODO:
@@ -25,7 +25,12 @@ public class BulletHandler : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.GetComponent<Enemy>())
+        {
+            collision.GetComponent<Enemy>().Damage(damage);
+        }
         Object.Destroy(gameObject);
+
         Debug.Log(collision.gameObject.name);
     }
 }

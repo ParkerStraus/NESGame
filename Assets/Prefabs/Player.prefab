@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8641510655790430658}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,10 @@ MonoBehaviour:
     OnGround: 0
     Attacking: 0
   anim: {fileID: 6198694942830601276}
+  Health: 15
+  Health_Max: 15
+  DamageCooldown: 0
+  DamageCooldown_Time: 0
   bulletFab: {fileID: 646268330230426918, guid: 938796cc1601c0542803579518144061, type: 3}
   AbilitySetting: 0
   AbilityFlags: 000100010101

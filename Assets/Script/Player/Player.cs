@@ -51,6 +51,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator_Player anim;
 
     [Header("Combat")]
+    [SerializeField]
+    private int Health;
+    [SerializeField]
+    private int Health_Max;
+    public float DamageCooldown;
+    public float DamageCooldown_Time;
+
     [SerializeField] private Transform bulletFab;
 
     public int AbilitySetting;
@@ -104,6 +111,7 @@ public class Player : MonoBehaviour
         }
         m_PlayerData.Attacking -= Time.deltaTime;
         anim.Animate(m_PlayerData);
+        DamageCooldown -= Time.deltaTime;
     }
 
     void HorizontalHandling()
@@ -247,5 +255,33 @@ public class Player : MonoBehaviour
         AbilityIndicator.sprite = AbilitySprite[AbilitySetting];
         yield return new WaitForSeconds(2);
         AbilityIndicator.enabled = false;
+    }
+
+    public void Damage(int damage)
+    {
+        if(DamageCooldown < 0)
+        {
+            DamageCooldown = DamageCooldown_Time;
+            Health -= damage;
+            if (Health <= 0)
+            {
+                Die();
+            }
+        }
+    }
+
+    public void Heal(int health)
+    {
+        Health += health;
+        if(Health >= Health_Max)
+        {
+            Health = Health_Max;
+        }
+    }
+
+    public void Die()
+    {
+
+        GameObject.Destroy(gameObject);
     }
 }
