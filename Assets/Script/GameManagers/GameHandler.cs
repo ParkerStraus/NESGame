@@ -13,6 +13,10 @@ public class GameHandler : MonoBehaviour
     public Player player;
     public bool PlayerAlive = true;
     public MusicHandler musicHandler;
+    public AudioClip BossLoop;
+    public AudioClip BossIntro;
+    public bool InBoss;
+    public Enemy Boss;
 
     [Header("UI")]
     public TMP_Text Health;
@@ -43,7 +47,14 @@ public class GameHandler : MonoBehaviour
 
     void UISet()
     {
+        Health.text = "Health: " + player.Health;
+        BossHealth.text = "Boss: " + Boss.Health;
+    }
 
+    public void StartBoss()
+    {
+        InBoss = true;
+        musicHandler.QueueNewSong(BossIntro, BossLoop);
     }
 
     public void AbilityIndicatorSet()

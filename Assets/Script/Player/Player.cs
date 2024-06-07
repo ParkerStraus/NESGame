@@ -109,6 +109,12 @@ public class Player : MonoBehaviour
         DamageCooldown -= Time.deltaTime;
     }
 
+    public void SetLocation(string Location)
+    {
+        string[] coords = Location.Split(',');
+        gameObject.transform.position = new Vector2(float.Parse(coords[0]), float.Parse(coords[1]));
+    }
+
     void HorizontalHandling()
     {
         if(!GameHandler.CanThePlayerMove)
