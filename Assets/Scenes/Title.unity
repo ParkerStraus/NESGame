@@ -953,11 +953,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.19056603
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.6191037
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3993476266096680814, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_Name
@@ -1019,9 +1019,11 @@ PrefabInstance:
       propertyPath: m_text
       value: NEW GAME
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6844713176135407883, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2061312531854680609, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
+    - {fileID: 3405432614002134897, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}

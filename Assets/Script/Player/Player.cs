@@ -1,8 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -51,10 +48,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator_Player anim;
 
     [Header("Combat")]
-    [SerializeField]
-    private int Health;
-    [SerializeField]
-    private int Health_Max;
+    public int Health;
+    public int Health_Max;
     public float DamageCooldown;
     public float DamageCooldown_Time;
 
@@ -116,6 +111,12 @@ public class Player : MonoBehaviour
 
     void HorizontalHandling()
     {
+        if(!GameHandler.CanThePlayerMove)
+        {
+            H_Velocity = 0;
+            m_PlayerData.Walking = false;
+            return;
+        }
         float control = Input.GetAxisRaw("Horizontal");
         m_PlayerData.Walking = true;
         if (control > 0)
@@ -163,7 +164,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("A") && IsJumping)
+        if (Input.GetButtonUp("A") && IsJumping && GameHandler.CanThePlayerMove)
         {
             JumpTime_Current = JumpTime;
         }
@@ -174,7 +175,7 @@ public class Player : MonoBehaviour
 
         V_Velocity = Mathf.Lerp(V_Velocity, VTarget, FallInterp*Time.deltaTime);
 
-        if (OnGround && Input.GetButtonDown("A"))
+        if (OnGround && Input.GetButtonDown("A") && GameHandler.CanThePlayerMove)
         {
             Audio.Jump();
             print("Jumping");
@@ -234,6 +235,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region General Info
     void SetAbility()
     {
         AbilitySetting++;
@@ -245,17 +247,9 @@ public class Player : MonoBehaviour
             AbilitySetting = AbilitySetting % AbilityFlags.Length;
         }
         //Set View of ability indicator
-        StopAllCoroutines();
-        StartCoroutine(AbilityVisibility());
+        FindAnyObjectByType<GameHandler>().AbilityIndicatorSet();
     }
 
-    IEnumerator AbilityVisibility()
-    {
-        AbilityIndicator.enabled = true;
-        AbilityIndicator.sprite = AbilitySprite[AbilitySetting];
-        yield return new WaitForSeconds(2);
-        AbilityIndicator.enabled = false;
-    }
 
     public void Damage(int damage)
     {
@@ -284,4 +278,7 @@ public class Player : MonoBehaviour
 
         GameObject.Destroy(gameObject);
     }
+
+
+    #endregion
 }

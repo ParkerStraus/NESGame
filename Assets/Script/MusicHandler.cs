@@ -60,5 +60,11 @@ public class MusicHandler : MonoBehaviour
         }
     }
 
+    public void StopMusic()
+    {
+        musicSource.Stop();
+        musicSource.enabled = false;
+    }
+
    
 }

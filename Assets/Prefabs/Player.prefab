@@ -87,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   Rigidbody: {fileID: 4366738003382831470}
-  sprite: {fileID: 0}
+  sprite: {fileID: 2355231701641287101}
   HorizontalSpeed: 7.5
   VerticalSpeed: 0
   GoingLeft: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   CoyoteTime: 0
   CoyoteTime_Base: 0.125
   OnGround: 0
-  Audio: {fileID: 0}
+  Audio: {fileID: 3321304811448515779}
   m_PlayerData:
     GoingRight: 0
     Walking: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   Health: 15
   Health_Max: 15
   DamageCooldown: 0
-  DamageCooldown_Time: 0
+  DamageCooldown_Time: 1
   bulletFab: {fileID: 646268330230426918, guid: 938796cc1601c0542803579518144061, type: 3}
   AbilitySetting: 0
   AbilityFlags: 000100010101
