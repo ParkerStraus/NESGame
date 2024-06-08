@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         bool[] abilities = SaveSystem.LoadData().LevelCompletion;
         for (int i = 0; i < abilities.Length; i++)
         {
-            print(abilities[i]);
+            //print(abilities[i]);
             AbilityFlags[i + 1] = abilities[i];
         }
 
@@ -184,7 +184,6 @@ public class Player : MonoBehaviour
         if (OnGround && Input.GetButtonDown("A") && GameHandler.CanThePlayerMove)
         {
             Audio.Jump();
-            print("Jumping");
             OnGround = false;
             V_Velocity = JumpSpeed;
             IsJumping = true;
