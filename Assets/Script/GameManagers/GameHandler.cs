@@ -8,6 +8,14 @@ using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour
 {
+    public enum Phases
+    {
+        game,
+        boss,
+        end
+    }
+    public Phases currentPhase;
+    public int Level;
     public static int Lives;
     public static bool CanThePlayerMove;
     public Player player;
@@ -16,6 +24,7 @@ public class GameHandler : MonoBehaviour
     public AudioClip BossLoop;
     public AudioClip BossIntro;
     public bool InBoss;
+    
     public Enemy Boss;
 
     [Header("UI")]
@@ -42,6 +51,11 @@ public class GameHandler : MonoBehaviour
             CanThePlayerMove = false;
             StartCoroutine(OnPlayerDeath());
         }
+        if(currentPhase == Phases.boss && Boss.Health <= 0)
+        {
+            currentPhase = Phases.end;
+            GameComplete();
+        }
         UISet();
     }
 
@@ -53,7 +67,8 @@ public class GameHandler : MonoBehaviour
 
     public void StartBoss()
     {
-        InBoss = true;
+        currentPhase = Phases.boss;
+        BossHealth.enabled = true;
         musicHandler.QueueNewSong(BossIntro, BossLoop);
     }
 
@@ -99,7 +114,7 @@ public class GameHandler : MonoBehaviour
         yield return new WaitForSeconds(2);
         AbilityImage.enabled = false;
         AbilityText.enabled = false;
-        BossHealth.enabled = true;
+        if(InBoss)BossHealth.enabled = true;
     }
 
     IEnumerator OnPlayerDeath()
@@ -113,6 +128,20 @@ public class GameHandler : MonoBehaviour
 
     void GameComplete()
     {
+        StartCoroutine(GameCompleteRoutine());
+    }
 
+    IEnumerator GameCompleteRoutine()
+    {
+        print("Boss Defeated");
+        SaveSystem.SaveLevelProgress(Level, true);
+        yield return new WaitForSeconds(3);
+        CanThePlayerMove = false;
+        print("Put cool fanfare here");
+        yield return new WaitForSeconds(3);
+        print("Yell new ability");
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Tutorial");
+        CanThePlayerMove = true;
     }
 }

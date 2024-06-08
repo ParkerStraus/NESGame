@@ -698,6 +698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04d81fbb82f288448e6ba821900ff53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPhase: 0
+  Level: 1
   player: {fileID: 0}
   PlayerAlive: 1
   musicHandler: {fileID: 0}
