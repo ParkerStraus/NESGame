@@ -7,6 +7,7 @@ public class BulletHandler : MonoBehaviour
     public int damage;
     public float speed;
     public float timeout;
+    public bool multishot;
     //TODO:
     //Add layer mask initialisation (e.g. enemy bullet exclude enemy layer, player bullets exclude player, etc.)
     //Optimization (object pooling? raycast collision?) 
@@ -29,7 +30,15 @@ public class BulletHandler : MonoBehaviour
         {
             collision.GetComponent<Enemy>().Damage(damage);
         }
-        Object.Destroy(gameObject);
+        if (multishot)
+        {
+            if(collision.gameObject.layer == 3) Destroy(gameObject);
+        }
+        else
+        {
+
+            Object.Destroy(gameObject);
+        }
 
         Debug.Log(collision.gameObject.name);
     }

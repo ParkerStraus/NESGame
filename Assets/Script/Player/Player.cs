@@ -355,7 +355,39 @@ public class Player : MonoBehaviour
     }
     void TexasAbility()
     {
-        AbilityRecharge[3] = 8;
+
+
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        int direc = 6;
+        if (m_PlayerData.GoingRight == true)
+        {
+            direc = 2;
+        }
+
+        if (y < 0)
+        {
+            if (m_PlayerData.Walking)
+            {
+                if (m_PlayerData.GoingRight == true) { direc = 3; }
+                else if (m_PlayerData.GoingRight != true) { direc = 5; }
+            }
+            else { direc = 4; }
+        }
+        else if (y > 0)
+        {
+            if (m_PlayerData.GoingRight != true) { direc = 7; }
+            else if (m_PlayerData.GoingRight == true) { direc = 1; }
+            if (m_PlayerData.Walking == false) { direc = 0; }
+        }
+        direc = direc * 45;
+        Quaternion angle = Quaternion.Euler(0.0f, 0.0f, -direc);
+        //Note: if adding additional shot types, change this to function call
+        var BUL = Instantiate(bulletFab, transform.position + new Vector3(0, -0.5f, 0), angle);
+        BUL.GetComponent<BulletHandler>().damage = 5;
+        BUL.GetComponent<BulletHandler>().multishot = true;
+        BUL.GetComponent<BulletHandler>().speed = 30.75f;
+        AbilityRecharge[3] = 5;
     }
     void MinneAbility()
     {
