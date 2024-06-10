@@ -13,7 +13,7 @@ public class Mob : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (state < 2)
+        if (state == EnemyStates.idle || state == EnemyStates.wander)
         {
             //Passive Loop
             Wander();
