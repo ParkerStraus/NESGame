@@ -13,6 +13,7 @@ public struct PlayerData
     public float Attacking;
     public float Damaged;
     public float Sunshine;
+    public bool PurpleRain;
 }
 
 public class Player : MonoBehaviour
@@ -355,7 +356,7 @@ public class Player : MonoBehaviour
     }
     void TexasAbility()
     {
-
+        // raging bull
 
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
@@ -391,6 +392,8 @@ public class Player : MonoBehaviour
     }
     void MinneAbility()
     {
+        //Purple rain
+        m_PlayerData.PurpleRain = true;
         AbilityRecharge[4] = 30;
     }
 
@@ -415,6 +418,11 @@ public class Player : MonoBehaviour
 
     public void Damage(int damage, float Offset)
     {
+        if(m_PlayerData.PurpleRain)
+        {
+            m_PlayerData.PurpleRain = false;
+            return;
+        }
         if (m_PlayerData.Sunshine > 0) return;
         if(DamageCooldown < 0)
         {
