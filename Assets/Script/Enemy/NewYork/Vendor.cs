@@ -27,6 +27,7 @@ public class Vendor : Enemy
         while (true) {
         yield return new WaitForSeconds(ThrowTime);
         var obj = Instantiate(ThrownObject);
+        obj.transform.position = transform.position;
 
         if (player.transform.position.x < transform.position.x)
         {
