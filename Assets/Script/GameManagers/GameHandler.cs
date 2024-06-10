@@ -29,6 +29,7 @@ public class GameHandler : MonoBehaviour
 
     [Header("UI")]
     public TMP_Text Health;
+    public GameObject[] HealthBarPics;
     public TMP_Text AbilityText;
     public Image AbilityImage;
     public Sprite[] AbilitySprites;
@@ -61,7 +62,18 @@ public class GameHandler : MonoBehaviour
 
     void UISet()
     {
-        Health.text = "Health: " + player.Health;
+        for(int i = 0; i < HealthBarPics.Length; i++)
+        {
+            if(player.Health >= i)
+            {
+                HealthBarPics[i].SetActive(true);
+            }
+            else
+            {
+                HealthBarPics[i].SetActive(false);
+            }
+        }
+        Health.text = "Health:";
         BossHealth.text = "Boss: " + Boss.Health;
     }
 

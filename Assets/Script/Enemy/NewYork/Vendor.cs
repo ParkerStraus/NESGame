@@ -6,12 +6,14 @@ using UnityEngine;
 public class Vendor : Enemy
 {
     public GameObject ThrownObject;
+    public IEnumerator throwing;
     public float ThrowTime;
     // Start is called before the first frame update
     void Start()
     {
         Init();
-        StartCoroutine(Throw());
+        throwing = Throw();
+        StartCoroutine(throwing);
     }
 
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class Vendor : Enemy
 
     public override void Die()
     {
-        StopAllCoroutines();
+        StopCoroutine(throwing);
 
         base.Die();
     }
