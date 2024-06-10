@@ -35,11 +35,11 @@ public abstract class Enemy : MonoBehaviour
         {
             Debug.LogError("Player not found! Ensure the player GameObject is tagged 'Player'.");
         }
-        if (rangepos.Length != 2)
+        rangepos = new Vector3[2];
+        if (range.Length != 2)
         {
             return;
         }
-            rangepos = new Vector3[2];
         
             rangepos[0] = transform.position + new Vector3(range[0], 0, 0);
             rangepos[1] = transform.position + new Vector3(range[1], 0, 0);
@@ -127,7 +127,7 @@ public abstract class Enemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Player>().Damage(1);
+            collision.gameObject.GetComponent<Player>().Damage(1, transform.position.x - collision.transform.position.x) ;
         }
     }
 
@@ -135,7 +135,7 @@ public abstract class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Player>().Damage(1);
+            collision.gameObject.GetComponent<Player>().Damage(1, transform.position.x - collision.transform.position.x);
         }
     }
 }

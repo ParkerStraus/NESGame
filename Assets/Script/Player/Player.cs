@@ -10,6 +10,7 @@ public struct PlayerData
     public bool Walking;
     public bool OnGround;
     public float Attacking;
+    public float Damaged;
 }
 
 public class Player : MonoBehaviour
@@ -117,13 +118,20 @@ public class Player : MonoBehaviour
 
     void HorizontalHandling()
     {
-        if(!GameHandler.CanThePlayerMove)
+        if (m_PlayerData.Damaged > 0)
+        {
+            m_PlayerData.Damaged -= Time.deltaTime;
+            return;
+        }
+        if (!GameHandler.CanThePlayerMove)
         {
             H_Velocity = 0;
             m_PlayerData.Walking = false;
             return;
         }
         float control = Input.GetAxisRaw("Horizontal");
+
+        
         m_PlayerData.Walking = true;
         if (control > 0)
         {
@@ -140,6 +148,7 @@ public class Player : MonoBehaviour
             H_Velocity = 0;
             m_PlayerData.Walking = false;
         }
+
     }
 
     void VerticalHandling()
@@ -256,7 +265,7 @@ public class Player : MonoBehaviour
     }
 
 
-    public void Damage(int damage)
+    public void Damage(int damage, float Offset)
     {
         if(DamageCooldown < 0)
         {
@@ -265,6 +274,15 @@ public class Player : MonoBehaviour
             if (Health <= 0)
             {
                 Die();
+            }
+            m_PlayerData.Damaged = 0.8f;
+            if(Offset < 0)
+            {
+                H_Velocity = 2;
+            }
+            else
+            {
+                H_Velocity = -2;
             }
         }
     }

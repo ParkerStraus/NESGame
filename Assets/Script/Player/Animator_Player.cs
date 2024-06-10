@@ -13,6 +13,7 @@ public class Animator_Player : MonoBehaviour
     private static readonly int Jump = Animator.StringToHash("Jump");
     private static readonly int Shoot = Animator.StringToHash("Shoot");
     private static readonly int ShootWalk = Animator.StringToHash("Shoot Walk");
+    private static readonly int Damaged = Animator.StringToHash("Damaged");
 
     public Sound_Player sound;
     // Start is called before the first frame update
@@ -23,6 +24,10 @@ public class Animator_Player : MonoBehaviour
 
     public void Animate(PlayerData data)
     {
+        if(data.Damaged > 0)
+        {
+            anim.CrossFade(Damaged, 0f);
+        }
         if (!data.OnGround)
         {
             anim.CrossFade(Jump, 0f);

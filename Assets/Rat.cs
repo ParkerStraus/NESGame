@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Rat : Enemy
 {
-    
+    Rigidbody2D rb;
+    public float DamageTimer;
+    public float DamageRecharge;
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         Init();
     }
 
@@ -39,13 +42,12 @@ public class Rat : Enemy
             //Go Forward 
             if(transform.position.x > player.gameObject.transform.position.x)
             {
-
-                transform.position -= new Vector3(speed*Time.deltaTime, 0, 0);
+                rb.velocity = new Vector3(-speed, 0, 0);
             }
             else
             {
 
-                transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+                rb.velocity = new Vector3(speed, 0, 0);
             }
             //Check if collided with Player
             yield return new WaitForEndOfFrame();
