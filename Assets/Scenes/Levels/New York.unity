@@ -224,19 +224,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.14713715
-      objectReference: {fileID: 0}
-    - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
-      propertyPath: m_NormalizedViewPortRect.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0.03140831
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.70590323
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99999994
+      value: 0.9375
       objectReference: {fileID: 0}
     - target: {fileID: 1473920466196955262, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_text
@@ -2575,10 +2575,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a1845cdc076af948bf0f995f4c7aae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 1
   range: []
-  aggrorange: 0
-  speed: 0
+  aggrorange: 3
+  speed: 4
   player: {fileID: 0}
 --- !u!4 &1774679596
 Transform:

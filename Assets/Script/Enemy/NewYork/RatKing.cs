@@ -13,7 +13,7 @@ public class RatKing : Enemy
     // Update is called once per frame
     void Update()
     {
-        
+        //Summon Rats
     }
 
     public void Provoke()

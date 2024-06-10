@@ -25,13 +25,25 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Init()
     {
-        rangepos = new Vector3[2];
-        if(rangepos.Length == 2 )
+
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null)
         {
+            player = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogError("Player not found! Ensure the player GameObject is tagged 'Player'.");
+        }
+        if (rangepos.Length != 2)
+        {
+            return;
+        }
+            rangepos = new Vector3[2];
+        
             rangepos[0] = transform.position + new Vector3(range[0], 0, 0);
             rangepos[1] = transform.position + new Vector3(range[1], 0, 0);
-        }
-        player = GameObject.Find("Player").transform;
+        
     }
 
     private void NewWander()

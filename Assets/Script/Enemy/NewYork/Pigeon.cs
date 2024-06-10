@@ -46,7 +46,7 @@ public class Pigeon : Enemy
 
     void PositionToPlayer()
     {
-        this.transform.position = Vector3.Lerp(transform.position, new Vector2(player.position.x, transform.position.y), speed * Time.deltaTime);
+        this.transform.position = Vector3.Lerp(transform.position, new Vector2(player.gameObject.transform.position.x, transform.position.y), speed * Time.deltaTime);
     }
 
     void Poop()
