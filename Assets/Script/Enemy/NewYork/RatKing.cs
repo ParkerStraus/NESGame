@@ -32,6 +32,8 @@ public class RatKing : Enemy
         {
             yield return new WaitForSeconds(3);
             var ratt = Instantiate(rat, spawnlocation);
+            ratt.transform.position += new Vector3(-1, 0);
+            ratt.GetComponent<Rat>().aggrorange = 99;
             yield return null;
         }
     }

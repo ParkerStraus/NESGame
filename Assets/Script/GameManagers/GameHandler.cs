@@ -104,23 +104,23 @@ public class GameHandler : MonoBehaviour
                 break;
             case 1:
                 //LA
-                AbilityText.text = "LA Ability";
+                AbilityText.text = "Take 5";
                 break;
             case 2:
-                //NYC
-                AbilityText.text = "NYC Ability";
+                //Florida
+                AbilityText.text = "Sunshine Shield";
                 break;
             case 3:
-                //Florida
-                AbilityText.text = "Flor Ability";
+                //New York
+                AbilityText.text = "Rat Trampoline";
                 break;
             case 4:
                 //Texas
-                AbilityText.text = "Texas Ability";
+                AbilityText.text = "Cool Hat";
                 break;
             case 5:
                 //Minnesota
-                AbilityText.text = "Minn Ability";
+                AbilityText.text = "Purple Rain";
                 break;
         }
         yield return new WaitForSeconds(2);

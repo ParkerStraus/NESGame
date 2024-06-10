@@ -25,19 +25,22 @@ public class Vendor : Enemy
     public IEnumerator Throw()
     {
         while (true) {
-        yield return new WaitForSeconds(ThrowTime);
-        var obj = Instantiate(ThrownObject);
-        obj.transform.position = transform.position;
+            if (TimeScale != 0)
+            {
+                yield return new WaitForSeconds(ThrowTime / TimeScale);
+                var obj = Instantiate(ThrownObject);
+                obj.transform.position = transform.position;
 
-        if (player.transform.position.x < transform.position.x)
-        {
-            obj.GetComponent<ArchedProjectile>().Velocity_x = -Mathf.Abs(obj.GetComponent<ArchedProjectile>().Velocity_x);
-        }
-        else
-        {
-            obj.GetComponent<ArchedProjectile>().Velocity_x = Mathf.Abs(obj.GetComponent<ArchedProjectile>().Velocity_x);
-        }
-        
+                if (player.transform.position.x < transform.position.x)
+                {
+                    obj.GetComponent<ArchedProjectile>().Velocity_x = -Mathf.Abs(obj.GetComponent<ArchedProjectile>().Velocity_x);
+                }
+                else
+                {
+                    obj.GetComponent<ArchedProjectile>().Velocity_x = Mathf.Abs(obj.GetComponent<ArchedProjectile>().Velocity_x);
+                }
+            }
+
             yield return null;
         }
     }

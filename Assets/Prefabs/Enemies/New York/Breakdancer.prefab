@@ -139,6 +139,9 @@ MonoBehaviour:
   aggrorange: 0
   speed: 0
   player: {fileID: 0}
+  TimeScale: 1
+  Freezeable: 1
+  state: 0
 --- !u!50 &1961235277359505613
 Rigidbody2D:
   serializedVersion: 4

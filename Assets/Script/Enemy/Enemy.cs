@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public abstract class Enemy : MonoBehaviour
@@ -11,6 +12,9 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float speed;
     public Transform player;
 
+    public float TimeScale;
+    public bool Freezeable;
+
     protected Vector3[] rangepos;
     protected Vector3  targetpos;
     public enum EnemyStates
@@ -19,7 +23,7 @@ public abstract class Enemy : MonoBehaviour
         wander,
         aggro
     };
-    protected EnemyStates state = EnemyStates.idle;
+    [SerializeField] protected EnemyStates state = EnemyStates.idle;
     protected float cooldown;
     //states note: 0=idle, 1=wandering, 2=aggro
 
@@ -67,7 +71,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void MoveWander()
     {
-        Vector3 newpos = Vector3.MoveTowards(transform.position, targetpos, speed * Time.deltaTime);
+        Vector3 newpos = Vector3.MoveTowards(transform.position, targetpos, speed * Time.deltaTime*TimeScale);
         transform.position = newpos;
         if (newpos == targetpos)
         {
@@ -86,7 +90,7 @@ public abstract class Enemy : MonoBehaviour
             }
             else
             {
-                cooldown -= Time.deltaTime;
+                cooldown -= Time.deltaTime * TimeScale;
             }
         }
         else if (state == EnemyStates.wander)
@@ -118,6 +122,20 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    public void Freeze()
+    {
+        if (Freezeable) StartCoroutine(FreezeRoutine());
+    }
+
+    IEnumerator FreezeRoutine()
+    {
+        TimeScale = 0;
+        GetComponent<SpriteRenderer>().color = Color.cyan;
+        yield return new WaitForSeconds(6);
+        TimeScale = 1;
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
     public virtual void Die()
     {
         Destroy(gameObject);
@@ -125,6 +143,7 @@ public abstract class Enemy : MonoBehaviour
 
     public void OnCollisionStay2D(UnityEngine.Collision2D collision)
     {
+        if (TimeScale == 0) return;
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Player>().Damage(1, transform.position.x - collision.transform.position.x) ;
@@ -133,6 +152,7 @@ public abstract class Enemy : MonoBehaviour
 
     public void OnTriggerStay2D(UnityEngine.Collider2D collision)
     {
+        if (TimeScale == 0) return;
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Player>().Damage(1, transform.position.x - collision.transform.position.x);

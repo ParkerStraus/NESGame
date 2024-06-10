@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -11,6 +12,7 @@ public struct PlayerData
     public bool OnGround;
     public float Attacking;
     public float Damaged;
+    public float Sunshine;
 }
 
 public class Player : MonoBehaviour
@@ -24,8 +26,8 @@ public class Player : MonoBehaviour
 
     public bool GoingLeft;
 
-    private float H_Velocity;
-    private float V_Velocity;
+    [SerializeField] private float H_Velocity;
+    [SerializeField] private float V_Velocity;
 
     [Header("Vertical Handler")]
     public float JumpSpeed;
@@ -58,8 +60,13 @@ public class Player : MonoBehaviour
 
     public int AbilitySetting;
     public bool[] AbilityFlags;
+    public float[] AbilityRecharge;
+    public float RechargeTime;
+    public IEnumerator RechargeReadyRoutine;
     public Sprite[] AbilitySprite;
     public SpriteRenderer AbilityIndicator;
+
+    [SerializeField] private GameObject FreezeBeamOBJ;
 
     // Start is called before the first frame update
     void Start()
@@ -68,10 +75,13 @@ public class Player : MonoBehaviour
 
         AbilityFlags[0] = true;
         bool[] abilities = SaveSystem.LoadData().LevelCompletion;
+        AbilityRecharge = new float[AbilityFlags.Length];
+        AbilityRecharge[0] = 0;
         for (int i = 0; i < abilities.Length; i++)
         {
             //print(abilities[i]);
             AbilityFlags[i + 1] = abilities[i];
+            AbilityRecharge[i + 1] = -1;
         }
 
         m_PlayerData.GoingRight = true;
@@ -100,7 +110,19 @@ public class Player : MonoBehaviour
                     ShootHandle();
                     break;
                 case 1:
-                    RatTrampoline();
+                    if (AbilityRecharge[0] <= 0) LAAbility(); 
+                    break;
+                case 2:
+                    if (AbilityRecharge[1] <= 0) FloridaAbility();
+                    break;
+                case 3:
+                    if (AbilityRecharge[2] <= 0) NYCAbility();
+                    break;
+                case 4:
+                    if (AbilityRecharge[3] <= 0) TexasAbility();
+                    break;
+                case 5:
+                    if (AbilityRecharge[4] <= 0) MinneAbility();
                     break;
 
             }
@@ -108,7 +130,10 @@ public class Player : MonoBehaviour
         m_PlayerData.Attacking -= Time.deltaTime;
         anim.Animate(m_PlayerData);
         DamageCooldown -= Time.deltaTime;
+        AbilityRecharging();
     }
+
+    #region Positioning
 
     public void SetLocation(string Location)
     {
@@ -207,7 +232,34 @@ public class Player : MonoBehaviour
         m_PlayerData.OnGround = OnGround;
     }
 
+    #endregion
+
     #region Shooting
+
+    void AbilityRecharging()
+    {
+        for(int i = 0; i < AbilityRecharge.Length; i++)
+        {
+            float TempValue = AbilityRecharge[i];
+            AbilityRecharge[i] -= Time.deltaTime;
+            if (AbilityRecharge[i] < 0 && TempValue >= 0)
+            {
+                if(RechargeReadyRoutine != null)StopCoroutine(RechargeReadyRoutine);
+                RechargeReadyRoutine = RechargeReady(i);
+                StartCoroutine(RechargeReadyRoutine);
+            }
+        }
+        
+        m_PlayerData.Sunshine -= Time.deltaTime;
+    }
+
+    IEnumerator RechargeReady(int i)
+    {
+        AbilityIndicator.enabled = true;
+        AbilityIndicator.sprite = AbilitySprite[i + 1];
+        yield return new WaitForSeconds(1.5f);
+        AbilityIndicator.enabled = false;
+    }
 
     void ShootHandle()
     {
@@ -242,9 +294,72 @@ public class Player : MonoBehaviour
         Instantiate(bulletFab, transform.position+new Vector3(0,-0.5f,0), angle);
     }
 
-    void RatTrampoline()
-    {
 
+    void LAAbility()
+    {
+        //Freeze enemy
+        AbilityRecharge[0] = 8;
+
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        int direc = 6;
+        if (m_PlayerData.GoingRight == true)
+        {
+            direc = 2;
+        }
+
+        if (y < 0)
+        {
+            if (m_PlayerData.Walking)
+            {
+                if (m_PlayerData.GoingRight == true) { direc = 3; }
+                else if (m_PlayerData.GoingRight != true) { direc = 5; }
+            }
+            else { direc = 4; }
+        }
+        else if (y > 0)
+        {
+            if (m_PlayerData.GoingRight != true) { direc = 7; }
+            else if (m_PlayerData.GoingRight == true) { direc = 1; }
+            if (m_PlayerData.Walking == false) { direc = 0; }
+        }
+        direc = direc * 45;
+        Quaternion angle = Quaternion.Euler(0.0f, 0.0f, -direc);
+        //Note: if adding additional shot types, change this to function call
+        Audio.Shoot();
+        Instantiate(FreezeBeamOBJ, transform.position + new Vector3(0, -0.5f, 0), angle);
+    }
+    void FloridaAbility()
+    {
+        AbilityRecharge[1] = 30;
+        m_PlayerData.Sunshine = 7;
+    }
+    void NYCAbility()
+    {
+        AbilityRecharge[2] = 4;
+        OnGround = false;
+        V_Velocity = JumpSpeed * 1.5f;
+        IsJumping = true;
+        StartCoroutine(RatTramp());
+    }
+    IEnumerator RatTramp()
+    {
+        float time = 0.25f;
+        while (time > 0)
+        {
+            time -= Time.deltaTime;
+            V_Velocity = JumpSpeed * 1.5f;
+            yield return new WaitForEndOfFrame();
+        }
+        yield return null;
+    }
+    void TexasAbility()
+    {
+        AbilityRecharge[3] = 8;
+    }
+    void MinneAbility()
+    {
+        AbilityRecharge[4] = 30;
     }
 
     #endregion
@@ -254,6 +369,7 @@ public class Player : MonoBehaviour
     {
         AbilitySetting++;
         AbilitySetting = AbilitySetting % AbilityFlags.Length;
+        
 
         while (AbilityFlags[AbilitySetting] == false)
         {
@@ -267,6 +383,7 @@ public class Player : MonoBehaviour
 
     public void Damage(int damage, float Offset)
     {
+        if (m_PlayerData.Sunshine > 0) return;
         if(DamageCooldown < 0)
         {
             DamageCooldown = DamageCooldown_Time;

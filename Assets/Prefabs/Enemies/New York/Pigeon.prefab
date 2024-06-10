@@ -102,5 +102,8 @@ MonoBehaviour:
   aggrorange: 3
   speed: 3
   player: {fileID: 0}
+  TimeScale: 1
+  Freezeable: 1
+  state: 0
   poop: {fileID: 5270159597888269911, guid: 3f969fa068ac1894bb90be24fd07ba61, type: 3}
   Provoked: 0

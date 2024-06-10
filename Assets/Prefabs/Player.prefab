@@ -91,6 +91,8 @@ MonoBehaviour:
   HorizontalSpeed: 7.5
   VerticalSpeed: 0
   GoingLeft: 0
+  H_Velocity: 0
+  V_Velocity: 0
   JumpSpeed: 10
   JumpTime: 0.25
   JumpTime_Current: 0
@@ -108,6 +110,8 @@ MonoBehaviour:
     Walking: 0
     OnGround: 0
     Attacking: 0
+    Damaged: 0
+    Sunshine: 0
   anim: {fileID: 6198694942830601276}
   Health: 15
   Health_Max: 15
@@ -116,14 +120,17 @@ MonoBehaviour:
   bulletFab: {fileID: 646268330230426918, guid: 938796cc1601c0542803579518144061, type: 3}
   AbilitySetting: 0
   AbilityFlags: 000100010101
+  AbilityRecharge: []
+  RechargeTime: 0
   AbilitySprite:
   - {fileID: -407411083, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}
-  - {fileID: 1488111919, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}
-  - {fileID: 835392206, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}
   - {fileID: 1365179811, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}
-  - {fileID: -669304563, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}
   - {fileID: -1618496322, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}
+  - {fileID: 1488111919, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}
+  - {fileID: -669304563, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}
+  - {fileID: 835392206, guid: 179bfc7b72ee36e499ffe9ad8f54bc8a, type: 3}
   AbilityIndicator: {fileID: 5757132303966675503}
+  FreezeBeamOBJ: {fileID: 5078517999935699712, guid: cd9511d8d35e03741a5acb4e92696abb, type: 3}
 --- !u!50 &4366738003382831470
 Rigidbody2D:
   serializedVersion: 4

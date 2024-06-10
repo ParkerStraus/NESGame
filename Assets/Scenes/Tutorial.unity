@@ -216,20 +216,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
+      propertyPath: far clip plane
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
+      propertyPath: near clip plane
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: orthographic size
       value: 13.732929
       objectReference: {fileID: 0}
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.14713715
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.70590323
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99999994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3993476266096680814, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_Name
@@ -1571,6 +1587,8 @@ MonoBehaviour:
   aggrorange: 0
   speed: 0
   player: {fileID: 0}
+  rat: {fileID: 0}
+  spawnlocation: {fileID: 0}
 --- !u!4 &1137248322
 Transform:
   m_ObjectHideFlags: 0

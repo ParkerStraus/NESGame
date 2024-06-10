@@ -28,7 +28,7 @@ public class Pigeon : Enemy
         float time = 0;
         while (time <= 3)
         {
-            time += Time.deltaTime;
+            time += Time.deltaTime * TimeScale;
             //Adjust position to intercept player
             PositionToPlayer();
             yield return new WaitForEndOfFrame();
@@ -37,8 +37,8 @@ public class Pigeon : Enemy
         Poop();
         while (time <= 6)
         {
-            time += Time.deltaTime;
-            this.transform.position += Vector3.up * 4 * Time.deltaTime;
+            time += Time.deltaTime * TimeScale;
+            this.transform.position += Vector3.up * 4 * Time.deltaTime * TimeScale;
             yield return new WaitForEndOfFrame();
         }
         Destroy(gameObject);
@@ -46,7 +46,7 @@ public class Pigeon : Enemy
 
     void PositionToPlayer()
     {
-        this.transform.position = Vector3.Lerp(transform.position, new Vector2(player.gameObject.transform.position.x, transform.position.y), speed * Time.deltaTime);
+        this.transform.position = Vector3.Lerp(transform.position, new Vector2(player.gameObject.transform.position.x, transform.position.y), speed * Time.deltaTime * TimeScale);
     }
 
     void Poop()

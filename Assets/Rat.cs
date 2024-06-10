@@ -42,12 +42,12 @@ public class Rat : Enemy
             //Go Forward 
             if(transform.position.x > player.gameObject.transform.position.x)
             {
-                rb.velocity = new Vector3(-speed, 0, 0);
+                rb.velocity = new Vector3(-speed * TimeScale, 0, 0);
             }
             else
             {
 
-                rb.velocity = new Vector3(speed, 0, 0);
+                rb.velocity = new Vector3(speed * TimeScale, 0, 0);
             }
             //Check if collided with Player
             yield return new WaitForEndOfFrame();

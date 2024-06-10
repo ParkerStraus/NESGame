@@ -54,6 +54,9 @@ MonoBehaviour:
   aggrorange: 4
   speed: 4
   player: {fileID: 0}
+  TimeScale: 1
+  Freezeable: 1
+  state: 0
   DamageTimer: 0
   DamageRecharge: 0
 --- !u!212 &3707128309813652030
