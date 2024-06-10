@@ -59,14 +59,14 @@ public abstract class Enemy : MonoBehaviour
         transform.position = newpos;
         if (newpos == targetpos)
         {
-            state = 0;
+            state = EnemyStates.idle;
             cooldown = 2;
         }
     }
 
     public void Wander()
     {
-        if (state == 0)
+        if (state == EnemyStates.idle)
         {
             if(cooldown <= 0)
             {
@@ -86,7 +86,7 @@ public abstract class Enemy : MonoBehaviour
     public void AggroCheck()
     {
         float dist = transform.position.x - player.position.x;
-        if(dist < Mathf.Abs(aggrorange))
+        if(Mathf.Abs(dist) < aggrorange)
         {
             state = EnemyStates.aggro;
         }
