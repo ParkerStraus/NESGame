@@ -221,11 +221,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      value: 0.14713715
       objectReference: {fileID: 0}
     - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 1
+      value: 0.70590323
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466231982804330994, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 0.99999994
       objectReference: {fileID: 0}
     - target: {fileID: 3993476266096680814, guid: f51ce1e915ed60e4da90fd6d977ff5ec, type: 3}
       propertyPath: m_Name
@@ -18251,7 +18255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd94a91afb349d4fb21a0667fe12cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: Oregon
+  Level: Minnesota
   Active: 0
   EnterArrow: {fileID: 815359411}
 --- !u!4 &2083003043

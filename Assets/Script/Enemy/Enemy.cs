@@ -83,7 +83,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void AggroCheck()
+    public virtual void AggroCheck()
     {
         float dist = transform.position.x - player.position.x;
         if(Mathf.Abs(dist) < aggrorange)
