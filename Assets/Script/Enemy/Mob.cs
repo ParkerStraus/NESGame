@@ -29,6 +29,7 @@ public class Mob : Enemy
         {
             //Aggro loop
             //chase code
+            //or should enemy not move for attacks?
             if (cooldown > 0)
             {
                 cooldown -= Time.deltaTime;
