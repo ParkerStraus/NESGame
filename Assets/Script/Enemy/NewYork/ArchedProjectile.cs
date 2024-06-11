@@ -9,17 +9,20 @@ public class ArchedProjectile : MonoBehaviour
     public float Velocity_y;
     public float Gravity;
     public Rigidbody2D rb;
+    public SpriteRenderer Sprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        Sprite = this.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Velocity_y -= Gravity * Time.deltaTime;
+        transform.Rotate(Vector3.forward, (360/ (-Velocity_x)) * Time.deltaTime);
     }
 
     private void FixedUpdate()
