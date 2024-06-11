@@ -2,15 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct AttackInfo
-{
-    public float range;
-    public float damage;
-    public bool stun;
-    public float stuntime;
-    public bool knockback;
-    public float knockbackforce;
-}
 
 public class Mob : Enemy
 {
@@ -19,9 +10,12 @@ public class Mob : Enemy
     void Start()
     {
         Init();
+        stun = false;
+        knockback = false;
     }
 
     // Update is called once per frame
+    //NOTE: as this is an archetype class, update should be moved to enemy instances
     void Update()
     {
         if (TimeScale > 0) return;
@@ -34,7 +28,16 @@ public class Mob : Enemy
         else
         {
             //Aggro loop
-            
+            //chase code
+            if (cooldown > 0)
+            {
+                cooldown -= Time.deltaTime;
+                return;
+            }
+            else
+            {
+                //attack code
+            }
         }
     }
 

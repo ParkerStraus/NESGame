@@ -11,9 +11,11 @@ public abstract class Enemy : MonoBehaviour
     public float aggrorange;
     [SerializeField] protected float speed;
     public Transform player;
+    public float attackrange;
 
     public float TimeScale;
     public bool Freezeable;
+    public EnemyAnimator animator;
 
     protected Vector3[] rangepos;
     protected Vector3  targetpos;
@@ -25,7 +27,9 @@ public abstract class Enemy : MonoBehaviour
     };
     [SerializeField] protected EnemyStates state = EnemyStates.idle;
     protected float cooldown;
-    //states note: 0=idle, 1=wandering, 2=aggro
+    protected bool stun = false;
+    protected bool knockback = false;
+    protected Vector2 kbforce = Vector2.zero;
 
     public virtual void Init()
     {
@@ -50,6 +54,7 @@ public abstract class Enemy : MonoBehaviour
         
     }
 
+    #region Passive Loop Function
     private void NewWander()
     {
         float dist = Random.Range(range[0], range[1]);
@@ -108,10 +113,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void VerticalHandling()
-    {
-
-    }
+    #endregion
 
     public virtual void Damage(int damage)
     {
@@ -121,6 +123,68 @@ public abstract class Enemy : MonoBehaviour
             Die();
         }
     }
+
+    #region Attack Functions
+
+    public void MeleeCheck()
+    {
+        float direc = Mathf.Sign(player.position.x - transform.position.x);
+        bool inRange = Physics2D.Raycast(transform.position, Vector2.right * direc, attackrange, 1 << player.gameObject.layer);
+        if (inRange)
+        {
+            //attack animation
+            //animation has func call event
+        }
+    }
+
+    public void MeleeAttack()
+    {
+        float direc = Mathf.Sign(player.position.x-transform.position.x);
+        Collider2D check = Physics2D.OverlapBox(transform.position + new Vector3(attackrange * direc, 0, 0), new Vector2(2, 2), 0, 1 << player.gameObject.layer);
+        if(check){
+            BaseAttack(check.gameObject.GetComponent<Player>(),transform.position.x-check.transform.position.x);
+        }
+        cooldown = 2;
+    }
+
+    public void RangedCheck()
+    {
+        float direc = Mathf.Sign(player.position.x - transform.position.x);
+        bool inRange = Physics2D.Raycast(transform.position, Vector2.right * direc, 999, 1 << player.gameObject.layer);
+        if (inRange)
+        {
+            //attack animation
+            //with even call
+        }
+    }
+
+    public void RangedAttack()
+    {
+        float direc = Mathf.Sign(player.position.x - transform.position.x);
+        //instantiate bullet here
+        //set velocity of bullet, with direction
+        cooldown = 2;
+    }
+
+    public void SummonAttack()
+    {
+        //Go to animation state, instantiate multiple mobs
+    }
+
+    public virtual void BaseAttack(Player player, float offset)
+    {
+        player.Damage(1, offset);
+        if (stun)
+        {
+            //stun player function
+        }
+        if (knockback)
+        {
+            //knockback player
+        }
+    }
+
+    #endregion
 
     public void Freeze()
     {
