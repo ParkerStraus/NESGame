@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
         AbilityFlags[0] = true;
         bool[] abilities = SaveSystem.LoadData().LevelCompletion;
         AbilityRecharge = new float[AbilityFlags.Length];
-        AbilityRecharge[0] = 0;
+        AbilityRecharge[0] = -1;
         for (int i = 0; i < abilities.Length; i++)
         {
             //print(abilities[i]);

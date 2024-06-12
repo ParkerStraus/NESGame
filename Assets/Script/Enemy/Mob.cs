@@ -18,7 +18,7 @@ public class Mob : Enemy
     //NOTE: as this is an archetype class, update should be moved to enemy instances
     void Update()
     {
-        if (TimeScale > 0) return;
+        if (TimeScale <= 0) return;
         if (state == EnemyStates.idle || state == EnemyStates.wander)
         {
             //Passive Loop

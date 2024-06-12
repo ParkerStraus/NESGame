@@ -24,7 +24,7 @@ public class Animator_Player : MonoBehaviour
 
     public void Animate(PlayerData data)
     {
-        if(data.Damaged > 0)
+        if(data.Damaged > 0f)
         {
             anim.CrossFade(Damaged, 0f);
         }
