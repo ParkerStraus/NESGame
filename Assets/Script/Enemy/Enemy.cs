@@ -33,7 +33,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Init()
     {
-
+        TimeScale = 1;
         GameObject playerObject = GameObject.FindWithTag("Player");
         if (playerObject != null)
         {

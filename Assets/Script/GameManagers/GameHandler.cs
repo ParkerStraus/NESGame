@@ -74,7 +74,7 @@ public class GameHandler : MonoBehaviour
             }
         }
         Health.text = "Health:";
-        BossHealth.text = "Boss: " + Boss.Health;
+        if(Boss != null)BossHealth.text = "Boss: " + Boss.Health;
     }
 
     public void StartBoss()
