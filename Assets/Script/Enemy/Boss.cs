@@ -5,20 +5,16 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     public int health;
-    private enum BossStates{
+    protected enum BossStates{
         Idle,
         Damage,
         Die,
-        Attack1
+        Attack
         }
-    private BossStates state = BossStates.Idle;
-    private float cooldown;
-    private bool locked=false;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    protected BossStates state = BossStates.Idle;
+    protected float cooldown;
+    protected bool locked=false;
+    [SerializeField] protected GameObject player;
 
     public void Damage(int dmg)
     {
@@ -27,6 +23,7 @@ public class Boss : MonoBehaviour
         if (health < 0)
         {
             state = BossStates.Die;
+            StopAllCoroutines();
         }
         locked = false;
         return;
@@ -41,11 +38,28 @@ public class Boss : MonoBehaviour
         yield return null;
     }
 
+    public virtual void AttackPattern()
+    {
+        //Note:
+        //override in implemented classes
+        //should contain attack decision making, starting of coroutines, locking the state machine, etc.
+        
+    }
+
+    //Boss death animation
+    //Instantiate death effect
+    //Destroy object (either delayed coroutine or animation event)
+    public virtual void Die()
+    {
+        Object.Destroy(this);
+    }
+
     // Update is called once per frame
     void Update()
     {
         //Basic working:
-        //checks boss state. if idle, wait out cooldown. otherwise, set new random attack. if an attack, lock and execute the attack, then set to idle, unlock, and set cooldown.
+        //State machine. On idle state, wait out cooldown. Otherwise, set to attack state.
+        //In attack, choose action using AttackPattern(), lock and execute, then set to idle, unlock, and set cooldown.
         //lock prevents state changes during an action. cooldown allows a period of idle time before next action
         //all attacks, movements, etc. will be actions of the boss, rather than continuously updating executions. This leads to the classic "boss attack patterns" type of gameplay.
         if (locked) return;
@@ -60,19 +74,15 @@ public class Boss : MonoBehaviour
                     }
                     else
                     {
-                        //replace values with range for attack states
-                        state = (BossStates) Random.Range(0, 0);
+                        state = BossStates.Attack;
                     }
                     break;
-                case BossStates.Attack1:
+                case BossStates.Attack:
                     locked = true;
-                    StartCoroutine(TestAttack());
-                    break;
+                    AttackPattern();
                     break;
                 case BossStates.Die:
-                    //Boss death animation
-                    //Instantiate death effect
-                    //Destroy object (either delayed coroutine or animation event)
+                    Die();
                     break;
                 default:
                     break;
