@@ -23,6 +23,14 @@ public class Poop : MonoBehaviour
         {
             collision.gameObject.GetComponent<Player>().Damage(1, transform.position.x - collision.transform.position.x);
         }
-        Destroy(this.gameObject);
+        if (collision.gameObject.tag != "Enemy") Destroy(this.gameObject);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Player>().Damage(1, transform.position.x - collision.transform.position.x);
+        }
+        if (collision.gameObject.tag != "Enemy") Destroy(this.gameObject);
     }
 }

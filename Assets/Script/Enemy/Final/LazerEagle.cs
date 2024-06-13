@@ -8,6 +8,7 @@ public class LazerEagle : Enemy
     public Rigidbody2D rb;
     public float Velocity;
     public float VelocityDerive;
+    public GameObject LazerOBJ;
     public SpriteRenderer sr;
     public float ShootCooldown;
     public float ShootCooldown_Base;
@@ -73,6 +74,7 @@ public class LazerEagle : Enemy
             {
                 ShootCooldown = ShootCooldown_Base;
                 print("Lazer Shot from eagle");
+                Instantiate(LazerOBJ, transform.position, Quaternion.identity);
             }
             yield return new WaitForFixedUpdate();
         }
