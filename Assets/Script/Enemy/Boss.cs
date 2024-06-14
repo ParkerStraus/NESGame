@@ -15,6 +15,7 @@ public class Boss : MonoBehaviour
     protected float cooldown;
     protected bool locked=false;
     [SerializeField] protected GameObject player;
+    protected Rigidbody2D rb;
 
     public void Damage(int dmg)
     {
@@ -55,7 +56,7 @@ public class Boss : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         //Basic working:
         //State machine. On idle state, wait out cooldown. Otherwise, set to attack state.
