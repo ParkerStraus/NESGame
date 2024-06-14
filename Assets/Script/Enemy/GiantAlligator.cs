@@ -23,6 +23,7 @@ public class GiantAlligator : Boss
         base.AttackPattern();
         locked = true;
         float x = Random.Range(0, 1);
+        //probabilities can be changed later
         if (x < 0.1)
         {
             StartCoroutine(SummonGators());
