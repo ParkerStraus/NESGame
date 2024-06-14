@@ -31,6 +31,7 @@ public class LevelDoor : MonoBehaviour
 
     public void EnterLevel()
     {
+        GameHandler.Lives = 2;
         SceneManager.LoadScene(Level);
     }
 

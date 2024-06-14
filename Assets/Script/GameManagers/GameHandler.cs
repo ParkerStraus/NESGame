@@ -29,6 +29,7 @@ public class GameHandler : MonoBehaviour
 
     [Header("UI")]
     public TMP_Text Health;
+    public TMP_Text Lives_Text;
     public GameObject[] HealthBarPics;
     public TMP_Text AbilityText;
     public Image AbilityImage;
@@ -41,6 +42,7 @@ public class GameHandler : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         CanThePlayerMove = true;
         musicHandler = GameObject.Find("Music").GetComponent<MusicHandler>();
+        Lives_Text.text = "LIVES: " + Lives;
     }
 
     // Update is called once per frame
@@ -73,8 +75,8 @@ public class GameHandler : MonoBehaviour
                 HealthBarPics[i].SetActive(false);
             }
         }
-        Health.text = "Health:";
-        if(Boss != null)BossHealth.text = "Boss: " + Boss.Health;
+        Health.text = "HEALTH:";
+        if(Boss != null)BossHealth.text = "BOSS: " + Boss.Health;
     }
 
     public void StartBoss()
@@ -135,7 +137,20 @@ public class GameHandler : MonoBehaviour
         musicHandler.StopMusic();
         yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if(Lives < 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    void GameOver()
+    {
+
+        SceneManager.LoadScene("Title");
     }
 
     void GameComplete()

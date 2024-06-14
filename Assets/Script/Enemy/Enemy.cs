@@ -205,7 +205,7 @@ public abstract class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void OnCollisionStay2D(UnityEngine.Collision2D collision)
+    public virtual void OnCollisionStay2D(UnityEngine.Collision2D collision)
     {
         if (TimeScale == 0) return;
         if(collision.gameObject.tag == "Player")

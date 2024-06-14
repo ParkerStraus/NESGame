@@ -42,4 +42,23 @@ public class BulletHandler : MonoBehaviour
 
         Debug.Log(collision.gameObject.name);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Enemy>())
+        {
+            collision.gameObject.GetComponent<Enemy>().Damage(damage);
+        }
+        if (multishot)
+        {
+            if (collision.gameObject.layer == 3) Destroy(gameObject);
+        }
+        else
+        {
+
+            Object.Destroy(gameObject);
+        }
+
+        Debug.Log(collision.gameObject.name);
+    }
 }

@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Texas.unity
     guid: 3495aec7a161d1849b8b90598fd19471
+  - enabled: 1
+    path: Assets/Scenes/Levels/Final.unity
+    guid: 89109077613ab8c479aa02c6e4f2af5b
   m_configObjects: {}
