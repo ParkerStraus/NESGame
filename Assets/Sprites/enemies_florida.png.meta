@@ -248,6 +248,132 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: enemies_florida_6
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 48
+        width: 12
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: -0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9760e0f08f6a144390bc2e904622f3a
+      internalID: -1283244317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_florida_7
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 80
+        width: 8
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f24033e45f126649b2ea130765a6e3b
+      internalID: -1570969057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_florida_8
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 66
+        width: 28
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08628e4e3d8c3424eabda8eb7b6c45d3
+      internalID: -948889742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_florida_9
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 51
+        width: 28
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e37df69f3a4e49942b7929749404fcf4
+      internalID: -1703926114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_florida_10
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 0
+        width: 25
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd2de1e34baf91459678063675fb86a
+      internalID: 1539188882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_florida_11
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 24
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63c60438031161e48b53d02be92c6497
+      internalID: -700103256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -261,10 +387,16 @@ TextureImporter:
     nameFileIdTable:
       enemies_florida_0: 1364702128
       enemies_florida_1: -332508835
+      enemies_florida_10: 1539188882
+      enemies_florida_11: -700103256
       enemies_florida_2: -999997279
       enemies_florida_3: -1744802311
       enemies_florida_4: -2054114322
       enemies_florida_5: 1057358426
+      enemies_florida_6: -1283244317
+      enemies_florida_7: -1570969057
+      enemies_florida_8: -948889742
+      enemies_florida_9: -1703926114
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
