@@ -38,7 +38,7 @@ public class Filibuster : Enemy
         while (true)
         {
             
-            yield return new WaitForSeconds(1.75f);
+            yield return new WaitForSeconds(1.0f);
             var bubble = Instantiate(bubbleOBJ, bubbleSpawn.position, Quaternion.identity);
             float offset = player.position.x - transform.position.x;
             if (offset > 0)
@@ -51,6 +51,9 @@ public class Filibuster : Enemy
             }
 
             //Send Bubble of shit
+            animator.Animate("Melee");
+            yield return new WaitForSeconds(0.75f);
+            animator.Animate("Idle");
 
         }
     }

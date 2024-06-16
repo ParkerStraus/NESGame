@@ -19,6 +19,14 @@ public class Politician : Enemy
         }
     }
 
+    public override IEnumerator OnAttack()
+    {
+        yield return base.OnAttack();
+        animator.Animate("Melee");
+        yield return new WaitForSeconds(0.40f);
+        animator.Animate("Idle");
+    }
+
     // Update is called once per frame
     void Update()
     {

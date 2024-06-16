@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6771363600680047816}
   - component: {fileID: 4619538455046286518}
   - component: {fileID: 5120603982207134479}
+  - component: {fileID: 5906193720960379197}
   m_Layer: 0
   m_Name: LazerEagle
   m_TagString: Enemy
@@ -49,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 2
   range: []
-  aggrorange: 12
+  aggrorange: 15
   speed: 10
   player: {fileID: 0}
   attackrange: 0
@@ -189,3 +190,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.03}
   m_EdgeRadius: 0
+--- !u!95 &5906193720960379197
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587902227846920047}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc422bb9c845b4641b3cb448c31efb4f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

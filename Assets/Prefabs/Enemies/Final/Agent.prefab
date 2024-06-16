@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7844342246050359997}
   - component: {fileID: 5081055674140860428}
   - component: {fileID: 355330400769232703}
+  - component: {fileID: 4460944606532063083}
+  - component: {fileID: 326398954618374238}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -68,7 +70,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0, y: 0.85}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -79,7 +81,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1.75}
   m_EdgeRadius: 0
 --- !u!212 &7844342246050359997
 SpriteRenderer:
@@ -180,11 +182,45 @@ MonoBehaviour:
   attackrange: 0
   TimeScale: 0
   Freezeable: 0
-  animator: {fileID: 0}
+  animator: {fileID: 4460944606532063083}
   state: 0
   Bullet: {fileID: 2867379205506950029, guid: d1f71af8cff50614db0ac41ab49ea6c4, type: 3}
   rb: {fileID: 5081055674140860428}
   bulletSpawn: {fileID: 6932419524740162969}
+--- !u!114 &4460944606532063083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212628213765873591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62fa2d1b78a2684e812f8898ba709ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 326398954618374238}
+--- !u!95 &326398954618374238
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212628213765873591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: abd50c6353ae4564ba192bdf3d67c9cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4391331421422780769
 GameObject:
   m_ObjectHideFlags: 0

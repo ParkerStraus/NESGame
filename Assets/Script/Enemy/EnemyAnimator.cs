@@ -6,7 +6,7 @@ public class EnemyAnimator : MonoBehaviour
 {
     public Animator animator;
     private static readonly int Idle = Animator.StringToHash("Idle");
-    private static readonly int Walk = Animator.StringToHash("Walk");
+    private static readonly int Walk = Animator.StringToHash("Moving");
     private static readonly int Jump = Animator.StringToHash("Jump");
     private static readonly int Shoot = Animator.StringToHash("Shoot");
     private static readonly int Melee = Animator.StringToHash("Melee");

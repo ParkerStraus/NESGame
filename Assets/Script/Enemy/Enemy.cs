@@ -211,6 +211,7 @@ public abstract class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Player>().Damage(1, transform.position.x - collision.transform.position.x) ;
+            StartCoroutine(OnAttack());
         }
     }
 
@@ -220,6 +221,12 @@ public abstract class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Player>().Damage(1, transform.position.x - collision.transform.position.x);
+            StartCoroutine(OnAttack());
         }
+    }
+
+    public virtual IEnumerator OnAttack()
+    {
+        yield return null;
     }
 }

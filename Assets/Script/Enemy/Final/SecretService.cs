@@ -29,9 +29,10 @@ public class SecretService : Enemy
         }
     }
 
-    IEnumerator ServiceRoutine()
+    public IEnumerator ServiceRoutine()
     {
         //aim 
+        animator.Animate("Melee");
         yield return new WaitForSeconds(1);
 
         //Shoot
@@ -39,19 +40,21 @@ public class SecretService : Enemy
         float offset = player.position.x - transform.position.x ;
         if (offset < 0)
         {
-            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
+            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
         }
         else
         {
-            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
         }
         yield return new WaitForSeconds(0.5f);
-        
+        animator.Animate("Moving");
+
 
         //ambush
         while (true)
         {
             rb.velocity = Vector3.Normalize(new Vector3(offset, 0, 0)) * speed;
+            GetComponent<SpriteRenderer>().flipX = (offset > 0) ? true : false;
             yield return new WaitForFixedUpdate();
         }
     }

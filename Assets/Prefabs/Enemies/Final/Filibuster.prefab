@@ -44,13 +44,15 @@ GameObject:
   - component: {fileID: 5270503189037106837}
   - component: {fileID: 5286210575611270762}
   - component: {fileID: 2505620332270555337}
+  - component: {fileID: 3300207952944949733}
+  - component: {fileID: 662651663999075255}
   m_Layer: 0
   m_Name: Filibuster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3277793391405418688
 Transform:
   m_ObjectHideFlags: 0
@@ -99,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0, y: 0.85}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -110,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1.7}
   m_EdgeRadius: 0
 --- !u!212 &5270503189037106837
 SpriteRenderer:
@@ -211,7 +213,41 @@ MonoBehaviour:
   attackrange: 0
   TimeScale: 0
   Freezeable: 0
-  animator: {fileID: 0}
+  animator: {fileID: 3300207952944949733}
   state: 0
   bubbleOBJ: {fileID: 8354045793704851914, guid: 3962b0d9f6a39c643a4b927bd419593f, type: 3}
   bubbleSpawn: {fileID: 1724334158475011883}
+--- !u!114 &3300207952944949733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4633790114532177596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62fa2d1b78a2684e812f8898ba709ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 662651663999075255}
+--- !u!95 &662651663999075255
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4633790114532177596}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 815d1b520b40f6849af5c94b5d8212bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
