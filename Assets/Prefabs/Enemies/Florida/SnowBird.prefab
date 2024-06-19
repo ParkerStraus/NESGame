@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 1260720269189472834}
   - component: {fileID: 672636933297395762}
   - component: {fileID: 8354430054201734644}
-  - component: {fileID: 8287495177110547672}
   - component: {fileID: 7907613518200970999}
+  - component: {fileID: 6964539178986977208}
   m_Layer: 0
   m_Name: SnowBird
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,8 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 2
   range:
-  - -12
-  - -4
+  - -8
+  - 4
   aggrorange: 0
   speed: 2.4
   player: {fileID: 0}
@@ -60,7 +60,10 @@ MonoBehaviour:
   TimeScale: 1
   Freezeable: 0
   animator: {fileID: 7907613518200970999}
+  DieSound: {fileID: 8300000, guid: ecc64d9782e71ed42b6f7e56a9afd839, type: 3}
   state: 1
+  GoingRight: 0
+  rb: {fileID: 1260720269189472834}
 --- !u!50 &1260720269189472834
 Rigidbody2D:
   serializedVersion: 4
@@ -87,7 +90,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &672636933297395762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,7 +134,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9, y: 1.5}
+  m_Size: {x: 2, y: 1.5}
   m_EdgeRadius: 0
 --- !u!212 &8354430054201734644
 SpriteRenderer:
@@ -185,7 +188,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8287495177110547672
+--- !u!114 &7907613518200970999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7533527427975620070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62fa2d1b78a2684e812f8898ba709ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6964539178986977208}
+--- !u!95 &6964539178986977208
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -206,16 +222,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7907613518200970999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7533527427975620070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a62fa2d1b78a2684e812f8898ba709ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8287495177110547672}

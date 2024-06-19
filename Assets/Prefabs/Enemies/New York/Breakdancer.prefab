@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2279531567081837527}
   - component: {fileID: 3121619000219514749}
   - component: {fileID: 1961235277359505613}
+  - component: {fileID: 8536163124329689606}
   m_Layer: 0
   m_Name: Breakdancer
   m_TagString: Untagged
@@ -143,6 +144,7 @@ MonoBehaviour:
   TimeScale: 1
   Freezeable: 1
   animator: {fileID: 0}
+  DieSound: {fileID: 8300000, guid: ecc64d9782e71ed42b6f7e56a9afd839, type: 3}
   state: 0
 --- !u!50 &1961235277359505613
 Rigidbody2D:
@@ -171,3 +173,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &8536163124329689606
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172137573659471587}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: be9b5b06285b458418727bd3a8f7c48a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

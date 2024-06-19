@@ -1,7 +1,4 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.RestService;
+
 using UnityEngine;
 
 public class Animator_Player : MonoBehaviour
@@ -12,7 +9,9 @@ public class Animator_Player : MonoBehaviour
     private static readonly int Walk = Animator.StringToHash("Walk");
     private static readonly int Jump = Animator.StringToHash("Jump");
     private static readonly int Shoot = Animator.StringToHash("Shoot");
+    private static readonly int ShootUp = Animator.StringToHash("Shoot Up");
     private static readonly int ShootWalk = Animator.StringToHash("Shoot Walk");
+    private static readonly int ShootWalkUp = Animator.StringToHash("Shoot Walk Up");
     private static readonly int Damaged = Animator.StringToHash("Damaged");
 
     public Sound_Player sound;
@@ -36,7 +35,14 @@ public class Animator_Player : MonoBehaviour
         {
             if (data.Attacking > 0)
             {
-                anim.CrossFade(ShootWalk, 0f);
+                if (data.AimingUp)
+                {
+                    anim.CrossFade(ShootWalkUp, 0f);
+                }
+                else
+                {
+                    anim.CrossFade(ShootWalk, 0f);
+                }
             }
             else anim.CrossFade(Walk, 0f);
         }
@@ -44,7 +50,14 @@ public class Animator_Player : MonoBehaviour
         {
             if (data.Attacking > 0)
             {
-                anim.CrossFade(Shoot, 0f);
+                if (data.AimingUp)
+                {
+                    anim.CrossFade(ShootUp, 0f);
+                }
+                else
+                {
+                    anim.CrossFade(Shoot, 0f);
+                }
             }
             else
             {

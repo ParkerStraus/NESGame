@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4359870188914223129}
   m_Layer: 0
   m_Name: BeachBro
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b684c8e457037a42990c8b31c466b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
+  Health: 4
   range: []
   aggrorange: 0
   speed: 0
@@ -58,6 +58,7 @@ MonoBehaviour:
   TimeScale: 0
   Freezeable: 0
   animator: {fileID: 1258737169707440769}
+  DieSound: {fileID: 8300000, guid: ecc64d9782e71ed42b6f7e56a9afd839, type: 3}
   state: 0
 --- !u!212 &7332532199203653836
 SpriteRenderer:

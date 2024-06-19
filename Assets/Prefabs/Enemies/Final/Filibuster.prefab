@@ -214,6 +214,7 @@ MonoBehaviour:
   TimeScale: 0
   Freezeable: 0
   animator: {fileID: 3300207952944949733}
+  DieSound: {fileID: 8300000, guid: ecc64d9782e71ed42b6f7e56a9afd839, type: 3}
   state: 0
   bubbleOBJ: {fileID: 8354045793704851914, guid: 3962b0d9f6a39c643a4b927bd419593f, type: 3}
   bubbleSpawn: {fileID: 1724334158475011883}

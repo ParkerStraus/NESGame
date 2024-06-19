@@ -57,6 +57,7 @@ MonoBehaviour:
   TimeScale: 0
   Freezeable: 0
   animator: {fileID: 0}
+  DieSound: {fileID: 8300000, guid: ecc64d9782e71ed42b6f7e56a9afd839, type: 3}
   state: 0
   screech: {fileID: 8300000, guid: ed6cd997f7ecf3a438d2123a6345d682, type: 3}
   rb: {fileID: 6771363600680047816}
@@ -174,7 +175,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

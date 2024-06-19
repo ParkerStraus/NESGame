@@ -9,6 +9,8 @@ public class Sound_Player : MonoBehaviour
     public AudioClip Sound_FootStep;
     public AudioClip Sound_Shoot;
     public AudioClip Sound_AbilitySelect;
+    public AudioClip Sound_Hit;
+    public AudioClip Sound_Die;
 
 
     // Start is called before the first frame update
@@ -25,7 +27,7 @@ public class Sound_Player : MonoBehaviour
 
     public void FootStep()
     {
-        m_AudioSource.PlayOneShot(Sound_FootStep);
+        AudioSource.PlayClipAtPoint(Sound_FootStep, transform.position);
     }
 
     public void Jump()
@@ -41,5 +43,15 @@ public class Sound_Player : MonoBehaviour
     public void AbilitySelect()
     {
         m_AudioSource.PlayOneShot(Sound_AbilitySelect);
+    }
+
+    public void Hit()
+    {
+        m_AudioSource.PlayOneShot(Sound_Hit);
+    }
+
+    public void Die()
+    {
+        AudioSource.PlayClipAtPoint(Sound_Die, transform.position);
     }
 }

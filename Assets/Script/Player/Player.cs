@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 [Serializable]
 public struct PlayerData
@@ -11,6 +9,7 @@ public struct PlayerData
     public bool Walking;
     public bool OnGround;
     public float Attacking;
+    public bool AimingUp;
     public float Damaged;
     public float Sunshine;
     public bool PurpleRain;
@@ -291,6 +290,7 @@ public class Player : MonoBehaviour
         Quaternion angle = Quaternion.Euler(0.0f, 0.0f, -direc);
         //Note: if adding additional shot types, change this to function call
         m_PlayerData.Attacking = 0.25f;
+        m_PlayerData.AimingUp = y > 0 ? true: false;
         Audio.Shoot();
         Instantiate(bulletFab, transform.position+new Vector3(0,-0.5f,0), angle);
     }
@@ -432,6 +432,7 @@ public class Player : MonoBehaviour
             {
                 Die();
             }
+            Audio.Hit();
             m_PlayerData.Damaged = 0.8f;
             if(Offset < 0)
             {
@@ -456,6 +457,7 @@ public class Player : MonoBehaviour
     public void Die()
     {
 
+        Audio.Die();
         GameObject.Destroy(gameObject);
     }
 

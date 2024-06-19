@@ -176,13 +176,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 2
   range: []
-  aggrorange: 8
+  aggrorange: 5
   speed: 7
   player: {fileID: 0}
   attackrange: 0
   TimeScale: 0
   Freezeable: 0
   animator: {fileID: 4460944606532063083}
+  DieSound: {fileID: 8300000, guid: ecc64d9782e71ed42b6f7e56a9afd839, type: 3}
   state: 0
   Bullet: {fileID: 2867379205506950029, guid: d1f71af8cff50614db0ac41ab49ea6c4, type: 3}
   rb: {fileID: 5081055674140860428}

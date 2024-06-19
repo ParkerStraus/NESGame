@@ -4,40 +4,36 @@ using UnityEngine;
 
 public class SnowBird : Enemy
 {
+    public bool GoingRight;
+    public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         this.animator.Animate("Moving");
         Init();
-        StartCoroutine(SnowBirdRoutine());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    IEnumerator SnowBirdRoutine()
-    {
-        bool GoingRight = true;
-        while (true)
+        if (GoingRight)
         {
-            if(GoingRight)
+            GetComponent<SpriteRenderer>().flipX = true;
+            rb.velocity = new Vector3(speed, 0);
+            if (transform.position.x > range[1])
             {
-                transform.position += new Vector3(speed, 0) * Time.deltaTime;
-                if(transform.position.x > range[1])
-                {
-                    GoingRight = !GoingRight;
-                }
+                GoingRight = !GoingRight;
             }
-            else
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            rb.velocity = new Vector3(-speed, 0);
+            if (transform.position.x < range[0])
             {
-                transform.position -= new Vector3(speed, 0) * Time.deltaTime;
-                if (transform.position.x < range[0])
-                {
-                    GoingRight = !GoingRight;
-                }
+                GoingRight = !GoingRight;
+                //code added
+
             }
         }
     }

@@ -1191,12 +1191,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPhase: 0
-  Level: 1
+  Level: 3
   player: {fileID: 0}
   PlayerAlive: 1
   musicHandler: {fileID: 0}
   BossLoop: {fileID: 8300000, guid: 7eddf6fd81955a4488c10b4d6087f96a, type: 3}
   BossIntro: {fileID: 8300000, guid: eeb80fd056effb249b9e25d2eaf38801, type: 3}
+  CompleteSound: {fileID: 8300000, guid: 093eb60064e85b843b3203b4dddd3ae2, type: 3}
+  GameOverSound: {fileID: 8300000, guid: b34d848d2f6731e4da06ea41fbcccf2f, type: 3}
   InBoss: 0
   Boss: {fileID: 0}
   Health: {fileID: 4650115311893506653}

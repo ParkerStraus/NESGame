@@ -144,6 +144,7 @@ MonoBehaviour:
   TimeScale: 1
   Freezeable: 1
   animator: {fileID: 0}
+  DieSound: {fileID: 8300000, guid: ecc64d9782e71ed42b6f7e56a9afd839, type: 3}
   state: 0
   ThrownObject: {fileID: 8828033174951396083, guid: 182c1216485f0c7429f2f2a458acde01, type: 3}
   ThrowPoint: {fileID: 2493155722976434258}

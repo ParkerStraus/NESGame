@@ -16,6 +16,7 @@ public abstract class Enemy : MonoBehaviour
     public float TimeScale;
     public bool Freezeable;
     public EnemyAnimator animator;
+    public AudioClip DieSound;
 
     protected Vector3[] rangepos;
     protected Vector3  targetpos;
@@ -109,8 +110,14 @@ public abstract class Enemy : MonoBehaviour
         float dist = transform.position.x - player.position.x;
         if(Mathf.Abs(dist) < aggrorange)
         {
+            if (state != EnemyStates.aggro) OnAggro();
             state = EnemyStates.aggro;
         }
+    }
+
+    public virtual void OnAggro()
+    {
+
     }
 
     #endregion
@@ -202,6 +209,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Die()
     {
+        AudioSource.PlayClipAtPoint(DieSound, transform.position);
         Destroy(gameObject);
     }
 

@@ -110,8 +110,10 @@ MonoBehaviour:
     Walking: 0
     OnGround: 0
     Attacking: 0
+    AimingUp: 0
     Damaged: 0
     Sunshine: 0
+    PurpleRain: 0
   anim: {fileID: 6198694942830601276}
   Health: 15
   Health_Max: 15
@@ -174,6 +176,8 @@ MonoBehaviour:
   Sound_FootStep: {fileID: 8300000, guid: c9b964645df8f4e46b251639f343b33d, type: 3}
   Sound_Shoot: {fileID: 8300000, guid: c7149eca00cb567449427f4d57d9b05d, type: 3}
   Sound_AbilitySelect: {fileID: 8300000, guid: cd5583bf0b951e14cab848570f167731, type: 3}
+  Sound_Hit: {fileID: 8300000, guid: fc86690a8405b7e478c6d33493b03969, type: 3}
+  Sound_Die: {fileID: 8300000, guid: 8a5aaa8a1d54099408ff6a6d916ab54b, type: 3}
 --- !u!82 &8641510655790430658
 AudioSource:
   m_ObjectHideFlags: 0

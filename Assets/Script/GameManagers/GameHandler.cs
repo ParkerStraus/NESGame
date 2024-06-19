@@ -23,6 +23,8 @@ public class GameHandler : MonoBehaviour
     public MusicHandler musicHandler;
     public AudioClip BossLoop;
     public AudioClip BossIntro;
+    public AudioClip CompleteSound;
+    public AudioClip GameOverSound;
     public bool InBoss;
     
     public Enemy Boss;
@@ -64,19 +66,34 @@ public class GameHandler : MonoBehaviour
 
     void UISet()
     {
-        for(int i = 0; i < HealthBarPics.Length; i++)
+        if(player != null)
         {
-            if(player.Health >= i)
+
+            for (int i = 0; i < HealthBarPics.Length; i++)
             {
-                HealthBarPics[i].SetActive(true);
+                if (player.Health >= i+1)
+                {
+                    HealthBarPics[i].SetActive(true);
+                }
+                else
+                {
+                    HealthBarPics[i].SetActive(false);
+                }
             }
-            else
+        }
+        else
+        {
+            for (int i = 0; i < HealthBarPics.Length; i++)
             {
-                HealthBarPics[i].SetActive(false);
+                    HealthBarPics[i].SetActive(false);
             }
         }
         Health.text = "HEALTH:";
         if(Boss != null)BossHealth.text = "BOSS: " + Boss.Health;
+        else
+        {
+            BossHealth.text = "BOSS: 0";
+        }
     }
 
     public void StartBoss()
@@ -135,7 +152,8 @@ public class GameHandler : MonoBehaviour
     {
         Lives--;
         musicHandler.StopMusic();
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(1f);
+        AudioSource.PlayClipAtPoint(GameOverSound, transform.position);
         yield return new WaitForSeconds(2f);
         if(Lives < 0)
         {
@@ -161,14 +179,26 @@ public class GameHandler : MonoBehaviour
     IEnumerator GameCompleteRoutine()
     {
         print("Boss Defeated");
-        SaveSystem.SaveLevelProgress(Level, true);
-        yield return new WaitForSeconds(3);
-        CanThePlayerMove = false;
-        print("Put cool fanfare here");
-        yield return new WaitForSeconds(3);
-        print("Yell new ability");
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("Tutorial");
-        CanThePlayerMove = true;
+        musicHandler.StopMusic();
+        if(Level == -1)
+        {
+
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene("Ending");
+        }
+        else
+        {
+            SaveSystem.SaveLevelProgress(Level, true);
+            yield return new WaitForSeconds(3);
+            CanThePlayerMove = false;
+            AudioSource.PlayClipAtPoint(CompleteSound, transform.position);
+            print("Put cool fanfare here");
+            yield return new WaitForSeconds(3);
+            print("Yell new ability");
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene("Tutorial");
+            CanThePlayerMove = true;
+
+        }
     }
 }

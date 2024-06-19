@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3177133439453157635}
   - component: {fileID: 2811687262306351216}
   - component: {fileID: 1312995935216950532}
+  - component: {fileID: 1836866674785975559}
   m_Layer: 0
   m_Name: Pigeon
   m_TagString: Untagged
@@ -100,13 +101,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1
   range: []
-  aggrorange: 3
+  aggrorange: 8.55
   speed: 3
   player: {fileID: 0}
   attackrange: 0
   TimeScale: 1
   Freezeable: 1
   animator: {fileID: 0}
+  DieSound: {fileID: 8300000, guid: ecc64d9782e71ed42b6f7e56a9afd839, type: 3}
   state: 0
   poop: {fileID: 5270159597888269911, guid: 3f969fa068ac1894bb90be24fd07ba61, type: 3}
   Provoked: 0
@@ -155,3 +157,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6875, y: 0.625}
   m_EdgeRadius: 0
+--- !u!95 &1836866674785975559
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5074092207336766755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1729e3df5c1c154597b784f614f7a58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
